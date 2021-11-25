@@ -1,7 +1,7 @@
-const nodeExternals = require('webpack-node-externals')
-const webpack = require('webpack')
-const { paths } = require('../scripts/utils')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+import nodeExternals from 'webpack-node-externals'
+import webpack from 'webpack'
+import { paths } from '../scripts/utils'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
 module.exports = {
   name: 'server',

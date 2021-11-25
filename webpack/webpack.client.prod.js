@@ -1,11 +1,10 @@
-const path = require('path')
-const webpack = require('webpack')
-
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const CompressionPlugin = require('compression-webpack-plugin')
-const LoadablePlugin = require('@loadable/webpack-plugin')
-const { paths } = require('../scripts/utils')
+import path from 'path'
+import webpack from 'webpack'
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import CompressionPlugin from 'compression-webpack-plugin'
+import LoadablePlugin from '@loadable/webpack-plugin'
+import { paths } from '../scripts/utils'
 
 module.exports = {
   name: 'client',

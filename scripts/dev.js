@@ -1,13 +1,15 @@
-const webpack = require('webpack')
-const nodemon = require('nodemon')
-const rimraf = require('rimraf')
-const express = require('express')
-const webpackDevMiddleware = require('webpack-dev-middleware')
-const webpackHotMiddleware = require('webpack-hot-middleware')
-const webpackConfig = require('../webpack')('development')
-const cors = require('cors')
+import webpack from 'webpack'
+import nodemon from 'nodemon'
+import rimraf from 'rimraf'
+import express from 'express'
+import webpackDevMiddleware from 'webpack-dev-middleware'
+import webpackHotMiddleware from 'webpack-hot-middleware'
+import WebpackConfig from '../webpack'
+import cors from 'cors'
 
-const { compilerListener, paths, compilation } = require('./utils')
+import { compilerListener, paths, compilation } from './utils'
+
+const webpackConfig = new WebpackConfig()
 
 const PORT = 3001
 
@@ -17,7 +19,7 @@ const start = async () => {
   try {
     rimraf.sync(paths.dist)
 
-    const [clientConfig, serverConfig] = webpackConfig
+    const [clientConfig, serverConfig] = webpackConfig.runDevelopment()
     clientConfig.entry.bundle = [
       `webpack-hot-middleware/client?path=http://localhost:${PORT}/__webpack_hmr&timeout=2000`,
       ...clientConfig.entry.bundle

@@ -1,14 +1,16 @@
-const webpack = require('webpack')
-const rimraf = require('rimraf')
-const webpackConfig = require('../webpack')('production')
+import webpack from 'webpack'
+import rimraf from 'rimraf'
+import WebpackConfig from '../webpack'
 
-const { compilerListener, paths, compilation } = require('./utils')
+const webpackConfig = new WebpackConfig()
+
+import { compilerListener, paths, compilation } from './utils'
 
 const build = async () => {
   try {
     rimraf.sync(paths.dist)
 
-    const [clientConfig, serverConfig] = webpackConfig
+    const [clientConfig, serverConfig] = webpackConfig.runProduction()
     const multiCompiler = webpack([clientConfig, serverConfig])
 
     const clientCompiler = multiCompiler.compilers.find(compiler => compiler.name === 'client')

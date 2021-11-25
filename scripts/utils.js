@@ -1,9 +1,10 @@
-const path = require('path')
-const fs = require('fs')
+import path from 'path'
+import fs from 'fs'
 
 const appDirectory = fs.realpathSync(process.cwd())
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath)
-const paths = {
+
+export const paths = {
   dist: resolveApp('dist'),
   publicPath: '/static/',
   clientBuild: resolveApp('dist/client'),
@@ -13,7 +14,7 @@ const paths = {
   src: resolveApp('src')
 }
 
-const compilerListener = (name, compiler) => {
+export const compilerListener = (name, compiler) => {
   return new Promise((resolve, reject) => {
     compiler.hooks.compile.tap(name, () => {
       console.log(`Compiling ${name} please wait...`)
@@ -40,7 +41,7 @@ const compilerListener = (name, compiler) => {
   })
 }
 
-const compilation = (err, stats, format) => {
+export const compilation = (err, stats, format) => {
   if (err) {
     console.error(err.stack || err)
     if (err.details) {
@@ -50,10 +51,4 @@ const compilation = (err, stats, format) => {
   }
 
   console.log(stats.toString(format))
-}
-
-module.exports = {
-  compilerListener,
-  paths,
-  compilation
 }

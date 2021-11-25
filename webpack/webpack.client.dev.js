@@ -1,8 +1,8 @@
-const webpack = require('webpack')
-const path = require('path')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const LoadablePlugin = require('@loadable/webpack-plugin')
-const { paths } = require('../scripts/utils')
+import webpack from 'webpack'
+import path from 'path'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import LoadablePlugin from '@loadable/webpack-plugin'
+import { paths } from '../scripts/utils'
 
 module.exports = {
   name: 'client',
