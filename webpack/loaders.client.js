@@ -1,6 +1,6 @@
-const path = require('path')
-const { paths } = require('../scripts/utils')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+import path from 'path'
+import { paths } from '../scripts/utils'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
 module.exports = {
   rules: [
